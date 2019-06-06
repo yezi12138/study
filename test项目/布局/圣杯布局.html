@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .flex .flex-container {
+        display: flex;
+      }
+
+      .flex-container .left,
+      .right {
+        width: 200px;
+        background-color: red;
+      }
+
+      .flex-container .middle {
+        flex: 1;
+        background-color: blue;
+      }
+
+      .base-container {
+        padding: 0 200px;
+        overflow: hidden;
+        border: 10px solid #333;
+      }
+
+      .base-container .middle {
+        width: 100%;
+        height: 400px;
+        background-color: deeppink;
+        float: left;
+      }
+
+      .base-container div {
+        padding-bottom: 500px;
+        margin-bottom: -500px;
+      }
+
+      .base-container .left {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        float: left;
+        margin-left: -100%;
+        position: relative;
+        left: -200px;
+      }
+
+      .base-container .right {
+        width: 200px;
+        height: 200px;
+        background-color: darkorchid;
+        float: left;
+        margin-left: -200px;
+        position: relative;
+        right: -200px;
+      }
+
+      .relative {
+        margin: 20px 0;
+      }
+
+      .relative .left {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-color: darkorchid;
+      }
+
+      .relative .right {
+        position: relative;
+        left: -20px;
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+      }
+
+      .relative .add {
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+
+      body,
+      ul,
+      li {
+        padding: 0;
+        margin: 0;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      .container {
+        height: 210px;
+        width: 460px;
+        border: 5px solid #000;
+      }
+      ul {
+        height: 210px;
+        overflow: hidden;
+        margin-right: -20px;
+      } /*一个负的margin-right,相当于把ul的宽度增加了20px*/
+      li {
+        height: 100px;
+        width: 100px;
+        background: #09f;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="flex">
+      <h1>flex圣杯</h1>
+      <div class="flex-container">
+        <div class="left">left <br /></div>
+        <div class="middle">middle</div>
+        <div class="right">right<br /><br /><br /><br /><br /><br /><br /></div>
+      </div>
+    </div>
+
+    <div class="base">
+      <h1>float + position</h1>
+      <div class="base-container">
+        <div class="middle"><h4>中间弹性区</h4></div>
+        <div class="left"><h4>左边栏</h4></div>
+        <div class="right"><h4>右边栏</h4></div>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="add"></div>
+    </div>
+
+    <div class="container">
+      <ul>
+        <li>子元素1</li>
+        <li>子元素2</li>
+        <li>子元素3</li>
+        <li>子元素4</li>
+        <li>子元素5</li>
+        <li>子元素6</li>
+        <li>子元素7</li>
+        <li>子元素8</li>
+      </ul>
+    </div>
+  </body>
+</html>

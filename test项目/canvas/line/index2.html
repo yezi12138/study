@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./line-connect.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #bg {
+      display: inline-block;
+      line-height: normal;
+      width: 80%;
+      height: 800px;
+      background-color: #ddd;
+      vertical-align: middle;
+      text-align: left;
+      overflow: auto;
+    }
+
+    .inline-block {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    #bg>div {
+      height: 100px;
+      position: absolute;
+      text-align: center;
+      border: 1px solid #333;
+      z-index: 1;
+    }
+
+    #bg>div>img {
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bg">
+    <div style="top: 30%;left: 20%;">
+      <img src="./1.png" alt="">
+      <div>用户0</div>
+    </div>
+    <div style="top: 30%;left: 35%;">
+      <img src="./2.png" alt="">
+      <div>Citrix NetScaler1</div>
+    </div>
+    <div style="top: 30%;left: 50%;">
+      <img src="./3.png" alt="">
+      <div>portal2</div>
+    </div>
+    <div style="top: 30%;left: 65%;">
+      <img src="./4.png" alt="">
+      <div>自助服务系统3</div>
+      <div>Citrix WI&SF（4）</div>
+    </div>
+    <div style="top: 52%;left: 50%;">
+      <div class="inline-block" onclick="openCHILD()">
+        <img src="./5.png" alt="">
+        <div>XD&XA4</div>
+        <div>Controller(1/4)</div>
+      </div>
+      <div class="inline-block children" style="display: none">
+        <img src="./6.png" alt="">
+        <div>Controller2</div>
+      </div>
+    </div>
+    <div style="top: 52%;left: 15%;">
+      <img src="./1.png" alt="">
+      <div>Farm1 5</div>
+    </div>
+    <div style="top: 10%;left: 45%;">
+      <img src="./7.png" alt="">
+      <div>AD(1/4) 6</div>
+    </div>
+  </div>
+  <script>
+    var topology
+    function openCHILD() {
+      var div = document.querySelector('.children')
+      if (!div) {
+        return
+      } else {
+        if (div.style.display === 'none') {
+          div.style.display = 'inline-block'
+        } else {
+          div.style.display = 'none'
+        }
+      }
+      topology.clear()
+      var el = document.getElementById('bg')
+      var nodes = el.children
+      topology.staticDraw(nodes[0], nodes[1])
+      topology.staticDraw(nodes[1], nodes[2])
+      topology.staticDraw(nodes[2], nodes[3])
+      topology.staticDraw(nodes[1], nodes[4], {
+        fromDirection: 'bottom',
+        toDirection: 'left'
+      })
+      topology.staticDraw(nodes[2], nodes[4], {
+        fromDirection: 'bottom',
+        toDirection: 'top'
+      })
+      topology.staticDraw(nodes[4], nodes[5], {
+        fromDirection: 'left',
+        toDirection: 'right'
+      })
+      topology.staticDraw(nodes[1], nodes[6], {
+        fromDirection: 'top',
+        toDirection: 'left'
+      })
+      topology.staticDraw(nodes[3], nodes[6], {
+        fromDirection: 'top',
+        toDirection: 'bottom'
+      })
+    }
+    window.onload = function () {
+      var el = document.getElementById('bg')
+      topology = new Topology({
+        el,
+        tree: false,
+        hoverFn: function (item) {
+          let x = (item.to.pos[item.toDirection][0] - item.from.pos[item.fromDirection][0]) / 2 + item.from.pos[item.fromDirection][0]
+          let y = (item.to.pos[item.toDirection][1] - item.from.pos[item.fromDirection][1]) / 2 + item.from.pos[item.fromDirection][1]
+          x = x === 0 ? item.from.pos[item.toDirection][0] + 10 : x
+          y = y === 0 ? item.from.pos[item.toDirection][1] + 10 : y
+          let div = document.getElementById('tTip')
+          if (!div) {
+            div = document.createElement('div')
+            div.style.display = 'block'
+            div.id = 'tTip'
+            div.style.zIndex = '1000'
+            div.style.padding = '10px'
+            div.style.background = '#fff'
+            div.style.textAlign = 'center'
+            div.innerText = '故障原因'
+            div.style.fontSize = '12px'
+            div.style.position = 'absolute'
+            div.style.left = x + 'px'
+            div.style.top = y + 'px'
+            el.appendChild(div)
+          } else {
+            div.style.display = 'block'
+            div.style.left = x + 'px'
+            div.style.top = y + 'px'
+          }
+        },
+        noHoverFn: function () {
+          let div = document.getElementById('tTip')
+          div && (div.style.display = 'none')
+        }
+      })
+      topology.clear()
+      var nodes = el.children
+      topology.staticDraw(nodes[0], nodes[1])
+      topology.staticDraw(nodes[1], nodes[2])
+      topology.staticDraw(nodes[2], nodes[3])
+      topology.staticDraw(nodes[1], nodes[4], {
+        fromDirection: 'bottom',
+        toDirection: 'left'
+      })
+      topology.staticDraw(nodes[2], nodes[4], {
+        fromDirection: 'bottom',
+        toDirection: 'top'
+      })
+      topology.staticDraw(nodes[4], nodes[5], {
+        fromDirection: 'left',
+        toDirection: 'right'
+      })
+      topology.staticDraw(nodes[1], nodes[6], {
+        fromDirection: 'top',
+        toDirection: 'left'
+      })
+      topology.staticDraw(nodes[3], nodes[6], {
+        fromDirection: 'top',
+        toDirection: 'bottom'
+      })
+    }
+  </script>
+</body>
+
+</html>

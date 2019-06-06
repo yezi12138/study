@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>this is template html test</h1>
+  <template id="test">
+    <div>
+      <h2>this is title slot</h2>
+      <slot name="title"></slot>
+    </div>
+    <div>
+      <h2>this is body slot</h2>
+      <slot name="body"></slot>
+    </div>
+    <div>
+      <h2>this is footer slot</h2>
+      <slot name="footer"></slot>
+    </div>
+  </template>
+  <my-template>
+    <div slot="title">Cat</div>
+    <div slot="body">Apple</div>
+    <div slot="footer">Banana</div>
+  </my-template>
+  <script>
+    class MyTemplate extends HTMLElement {
+    constructor() {
+      super();
+      const root = this.attachShadow({ mode: 'open' });
+      const template = document.getElementById('test');
+      console.log(template.content)
+      root.appendChild(document.importNode(template.content, true));
+    }
+  }
+  customElements.define('my-list', MyTemplate);
+  </script>
+</body>
+</html>

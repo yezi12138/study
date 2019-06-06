@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, _initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="./line-connect.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <style>
+    .a-1,
+    .b-1 {
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      border: 1px solid #333;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background-color: #ccc;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    #bg {
+      display: inline-block;
+      line-height: normal;
+      width: 90%;
+      height: 450px;
+      background-color: #ddd;
+      vertical-align: middle;
+      text-align: left;
+      overflow: auto;
+    }
+
+    .dot {
+      display: inline-block;
+      position: absolute;
+      background-color: #ccc;
+      border: 2px solid #333;
+      border-radius: 50%;
+      width: 5px;
+      height: 5px;
+    }
+  </style>
+
+  <body>
+    <div>
+      <p>
+        <div>等待优化</div>
+      </p>
+      <input type="text" id="error" />
+      <button onclick="draw()">故障连线</button>
+    </div>
+    <div id="bg">
+      <div class="main" data-expand="true">
+        <div>
+          <img src="./1.png" alt="">
+          <div>故障根因</div>
+        </div>
+        <div class="t-children">
+          <div data-expand="true">
+            <img src="./2.png" alt="">
+            <div>接入层</div>
+            <div class="t-children">
+              <div>
+                <div>VPN</div>
+                <div class="t-children">
+                  <div>证书存在</div>
+                  <div>证书有效期</div>
+                  <div>STA状态</div>
+                </div>
+              </div>
+              <div>
+                <div>SFWISFWISFWISFWISFWISFWI</div>
+                <div class="t-children">
+                  <div>
+                    <img src="./7.png" alt="">
+                    <div>操作系统</div>
+                  </div>
+                  <div>
+                      <img src="./7.png" alt="">
+                      <div>硬件</div>
+                  </div>
+                  <div>
+                      <img src="./7.png" alt="">
+                      <div>应用</div>
+                  </div>
+                </div>
+              </div>
+              <div>test</div>
+            </div>
+          </div>
+          <div data-expand="true">
+            <img src="./3.png" alt="">
+            <div>控制层</div>
+            <div class="t-children">
+              <div>
+                <div>AS/DNS</div>
+                <div class="t-children">
+                  <div>
+                    <div>操作系统</div>
+                    <div class="t-children">
+                      <div>
+                        <div>服务器故障</div>
+                        <div class="t-children">
+                          <div>服务器死</div>
+                          <div>服务器没启动</div>
+                          <div>服务器假死</div>
+                        </div>
+                      </div>
+                      <div>DNS解析</div>
+                      <div>时间</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>应用</div>
+                    <div class="t-children">
+                      <div>
+                        <div>证书问题</div>
+                        <div class="t-children">
+                          <div>证书丢失</div>
+                          <div>证书过期</div>
+                          <div>网卡延迟</div>
+                          <div>网卡延迟</div>
+                          <div>网卡延迟</div>
+                          <div>网卡延迟</div>
+                          <div>网卡延迟</div>
+                          <div>网卡延迟</div>
+                          <div>网卡延迟</div>
+                          <div>网卡延迟</div>
+                        </div>
+                      </div>
+                      <div>Broke忙</div>
+                      <div>
+                        <div>Li</div>
+                        <div class="t-children">
+                          <div>License过期</div>
+                          <div>License连不上</div>
+                        </div>
+                      </div>
+                      <div>web站点忙</div>
+                      <div>
+                        <div>SQL连接不上</div>
+                        <div class="t-children">
+                          <div>IP地址</div>
+                          <div>见证服务器坏</div>
+                          <div>账号密码过期</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>硬件</div>
+                    <div class="t-children">
+                      <div>
+                        <div>内存</div>
+                        <div class="t-children">
+                          <div>SQL</div>
+                          <div>AD</div>
+                          <div>SQL</div>
+                          <div>AD</div>
+                          <div>SQL</div>
+                          <div>AD</div>
+                          <div>SQL</div>
+                          <div>AD</div>
+                          <div>SQL</div>
+                          <div>AD</div>
+                          <div>SQL</div>
+                          <div>AD</div>
+                          <div>SQL</div>
+                          <div>AD</div>
+                        </div>
+                      </div>
+                      <div>磁盘满磁盘满磁盘满磁盘满</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>License</div>
+              <div>SR/SA</div>
+              <div>ZDC/DDC</div>
+              <div>SQL Server</div>
+            </div>
+          </div>
+          <div data-expand="true">
+            <img src="./4.png" alt="">
+            <div>虚拟化</div>
+            <div class="t-children">
+                <div>
+                    <div>网</div>
+                    <div class="t-children">
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                      <div>网卡延迟</div>
+                    </div>
+                  </div>
+              <div>
+                <img src="./5.png" alt="">
+                <div>虚拟网络</div>
+                <div class="t-children">
+                  <div>延迟</div>
+                  <div>带宽/流量</div>
+                </div>
+              </div>
+              <div>内存/cpu</div>
+              <div>
+                <div>磁盘/储存</div>
+                <div class="t-children">
+                  <div>存储写延迟大</div>
+                  <div>用户无反应</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function draw() {
+      var error = document.getElementById('error').value
+      var errorObj = window.lineConnect.find(error)
+      errorObj.error = true
+      window.lineConnect.reDraw()
+    }
+    window.onload = function() {
+      var el = document.getElementById('bg')
+      window.lineConnect = new Topology({
+        el,
+        drag: true,
+        hover: true
+        // ,animation: true
+      })
+    }
+  </script>
+</html>

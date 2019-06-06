@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 如果不设置top之类,则默认会停留在原本的位置，并且大小失去div属性，以内容的高低来设置 -->
+  <style>
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+    .container {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+    }
+    .normal {
+      height: 40px;
+      background: blue;
+      color: #fff;
+      text-align: center;
+    }
+    #top, #left, #right {
+      box-sizing: border-box;
+      position: absolute;
+      text-align: center;
+      color: #fff;
+    }
+    #top {
+      z-index: 3;
+      width: 100%;
+      height: 40px;
+      background: red;
+      padding-left: 150px;
+    }
+    #left {
+      z-index: 2;
+      width: 150px;
+      height: 100%;
+      background: green;
+      padding-top: 40px;
+    }
+    .side {
+      position: fixed;
+      left:150px;
+      width: 100px;
+      height: 150px;
+      background: black;
+    }
+    #right {
+      z-index: 1;
+      left: 150px;
+      top: 40px;
+      right: 0;
+      bottom: 0;
+      background: #ccc;
+    }
+    .fixed {
+      width: 300px;
+      height: 300px;
+      background: yellow;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+      <!-- <div class="normal">normal</div> -->
+      <div id="top">top</div>
+      <div id="left">
+          left
+        <div class="side">side</div>
+      </div>
+      <div id="right">
+        <div class="fixed"></div>
+      </div>
+    </div>
+</body>
+</html>

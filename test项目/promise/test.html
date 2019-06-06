@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test</title>
+</head>
+<body>
+  <script src="./Ypromise.js"></script>
+  <script>
+    window.onload = function () {
+      var promise1 = new Ypromise(function (resolve, reject) {
+        console.log('完成创建Ypromise')
+        console.log('%c吃早餐,等待4秒', 'color:red')
+        resolve(1)
+      })
+      var promise2 = promise1.then((data) => {
+        var promise4 = new Ypromise((resolve) => {
+          setTimeout(() => {
+            console.log('%c吃午餐,等待3秒', 'color:red', data)
+            resolve(2)
+          }, 1000)
+        })
+        return promise4
+      })
+      var promise3 = promise2.then((data) => {
+        console.log('%c吃晚餐', 'color:red',data)
+      })
+      console.log('promise1', promise1)
+      console.log('promise2',promise2)
+      console.log('promise3',promise3)
+      // .then((data) => {
+      //   console.log('%c吃夜宵', 'color:red', data)
+      // })
+      // console.log('2')
+
+      // 完成创建a 1 2 5 3 4
+    }
+  </script>
+</body>
+</html>

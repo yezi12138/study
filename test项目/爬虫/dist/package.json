@@ -1,0 +1,10 @@
+{
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "inquirer": "^6.2.1",
+    "superagent": "^4.0.0"
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <!-- Add to home screen for Safari on iOS -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="web_app">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000000">
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileColor" content="#000000">
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>this </h1>
+    <!-- <video src="https://statwup.huya.com/?timestamp=1548325189575"></video> -->
+    <!-- built files will be auto injected -->
+  </body>
+  <script src="./pwa.js"></script>
+  <script>
+    window.onload = function () {
+      navigator.serviceWorker && navigator.serviceWorker.register('pwa.js')
+      .then((registration) => {
+        navigator.serviceWorker.addEventListener('message', e => {
+          // service-worker.js 如果更新成功会 postMessage 给页面，内容为 'sw.update'
+          // if (e.data === 'sw.update') {
+          //   createUpDateDiv()
+          // }
+        })
+      })
+      .catch(function(error) {
+        console.log('Registration failed with ' + error)
+      })
+    }
+    var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+    Notification.requestPermission(function (status) {
+      console.log('Notification', status)
+    })
+  </script>
+</html>

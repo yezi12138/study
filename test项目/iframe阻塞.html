@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>iframe阻塞</title>
+  <script>
+    console.log('start')
+    console.time('iframe');
+    console.log(document.getElementById('baidu'))
+    window.onload = function () {
+      console.log('----onload----')
+      console.log(document.getElementById('baidu'))
+    }
+  </script>
+</head>
+<body>
+    <iframe id="baidu" src="http://baidu.com" frameborder="0"></iframe>
+  <h1> this is a test </h1>
+  <iframe id="baidu" src="http://baidu.com" frameborder="0"></iframe>
+</body>
+<script>
+  console.timeEnd('iframe');
+  console.log('end')
+  console.log(document.getElementById('baidu'))
+  window.onload = function () {
+      console.log('----onload----')
+      console.log(document.getElementById('baidu'))
+    }
+</script>
+</html>

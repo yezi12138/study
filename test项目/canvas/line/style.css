@@ -1,0 +1,41 @@
+.add-icon:after, .reduce-icon:after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
+  right: 5px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.add-icon:after {
+  background-image: url('./add.png');
+}
+
+.reduce-icon:after {
+  background-image: url('./reduce.png');
+}
+
+.t-item {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0 20px;
+}
+
+.t-root {
+  top: 30%;
+  left:90%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  display: block;
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+  padding: 0 20px;
+}
